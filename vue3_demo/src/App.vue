@@ -1,29 +1,14 @@
 <template>
-    <div class="xm-test">
-        test
-        <div class="xm-test__inner">
-            el
-        </div>
-        <div class="xm-test--success">test</div>
-    </div>
+    <Layout></Layout>
 </template>
-
 <script setup>
-
+import Layout from './views/Layout/index.vue'
 
 
 </script>
 
-<style lang="scss" scoped>
-@include b(test) {
-    color: red;
-
-    @include e(inner) {
-        color: blue
-    }
-
-    @include m(success) {
-        color: green
-    }
+<style lang="scss">
+#app {
+    @include bfc
 }
 </style>

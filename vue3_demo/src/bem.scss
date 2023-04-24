@@ -3,6 +3,10 @@ $block-sel: "-" !default;
 $elem-sel:"__" !default;
 $mod-sel: "--" !default;
 
+@mixin  bfc{
+    height: 100%;
+    overflow: hidden;
+}
 
 @mixin b($block){
     $B: #{ $namespace+$block-sel+$block};
