@@ -1,26 +1,31 @@
 <template>
-    <div class="content">
-        <button @click="add">Add</button>
-        <button @click="pop">Pop</button>
-        <div class="wraps animate__animated">
-            <TransitionGroup enter-active-class="animate__heartBeat" leave-active-class="animate__hinge">
-                <div class="item" :key="item" v-for="item in list" style="font-size: 30px;">{{ item }}</div>
-            </TransitionGroup>
-        </div>
+    <div class="btns">
+        <button v-has-show="'shop:create'">创建</button>
+        <button v-has-show="'shop:edit'">编辑</button>
+        <button v-has-show="'shop:delete'">删除</button>
+    </div>
+
+    <div class="box">
+        <div header></div>
+        <div>内容</div>
     </div>
 </template>
 
 <script setup lang="ts">
-import 'animate.css'
-import { reactive } from "vue";
+import type { Directive } from "vue"
 
-const list = reactive<number[]>([1, 2, 3, 4, 5])
-const add = () => {
-    list.push(list.length + 1)
-}
+localStorage.setItem('userId', 'root-zj')
+const permission = [
+    'root-zj:shop:edit',
+    'root-zj:shop:create',
+    'root-zj:shop:delete'
+]
 
-const pop = () => {
-    list.pop()
+const userId = localStorage.getItem('userId')
+const vHasShow: Directive<HTMLElement, string> = (el, binding) => {
+    if (!permission.includes(userId + ':' + binding.value)) {
+        el.style.display = "none"
+    }
 }
 
 </script>
