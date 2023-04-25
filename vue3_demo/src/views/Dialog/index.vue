@@ -5,7 +5,7 @@
         </header>
         <main class="main">
             <div v-for="(item, index) in data" :key="index">
-                <slot name="main">{{ item.name }} -- {{ item.age }}</slot>
+                <slot name="main" :data="item">{{ item.name }} -- {{ item.age }}</slot>
             </div>
         </main>
         <footer class="footer">
