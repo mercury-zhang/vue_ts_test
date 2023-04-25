@@ -1,24 +1,21 @@
 <template>
-    <div>
-        <Dialog>
-            <template #default="{ data }">
-                <div>{{ data.name }} -- {{ data.age }}</div>
-            </template>
-            <template #[name]>
-                <div>动态插槽</div>
-            </template>
-            <template #header>
-                <div>上面</div>
-            </template>
-        </Dialog>
-    </div>
+    <!-- <Suspense>
+        <template #default>
+            <SyncVue></SyncVue>
+        </template>
+        <template #fallback>
+            
+        </template>
+    </Suspense> -->
+    <skeletonVue></skeletonVue>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import Dialog from './views/Dialog/index.vue'
+import { defineAsyncComponent } from 'vue';
+import skeletonVue from './views/skeleton/skeleton.vue'
+const SyncVue = defineAsyncComponent(() => import('@/views/skeleton/sync.vue'))
 
-let name = ref('footer')
+
 </script>
 
 <style lang="scss" scoped></style>
