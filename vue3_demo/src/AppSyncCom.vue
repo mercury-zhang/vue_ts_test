@@ -1,13 +1,12 @@
 <template>
-    <!-- <Suspense>
+    <Suspense>
         <template #default>
             <SyncVue></SyncVue>
         </template>
         <template #fallback>
-            
+            <skeletonVue></skeletonVue>
         </template>
-    </Suspense> -->
-    <skeletonVue></skeletonVue>
+    </Suspense>
 </template>
 
 <script setup lang="ts">
